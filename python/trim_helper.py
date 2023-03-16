@@ -13,8 +13,7 @@ ATLASES_DIR = f"{CLIENT_RESOURCE_DIR}/atlases"
 COLOUR_PALETTES_DIR = f"{CLIENT_RESOURCE_DIR}/textures/trims/color_palettes"
 TEMPLATE_DIR = f"{CLIENT_RESOURCE_DIR}/textures/trims/models/armor"
 
-TRIM_MATERIAL_TAG_DIR = f"{SERVER_DATA_DIR}/tags/items/trim_materials"
-TRIM_TEMPLATE_TAG_DIR = f"{SERVER_DATA_DIR}/tags/items/trim_templates"
+TRIM_TAG_DIR = f"{SERVER_DATA_DIR}/tags/items/"
 
 TRIM_MATERIAL_DIR = f"{SERVER_DATA_DIR}/trim_material"
 TRIM_TEMPLATE_DIR = f"{SERVER_DATA_DIR}/trim_pattern"
@@ -230,6 +229,7 @@ def add_custom_material(name, ingredient_identifier, colour_palette_texture_path
     custom_materials[name] = (ingredient_identifier, colour_palette_texture_path)
     all_materials[name] = (len(all_materials) - 9) / MAX_MATERIALS
     ARMOR_TRIM_PERMUTATIONS[name] = "trims/color_palettes/" + name
+    add_material_tag(ingredient_identifier)
     print("Added custom material: " + name)
 
 
@@ -257,6 +257,7 @@ def add_custom_template(name, template_identifier, template_texture_path):
     custom_templates[name] = (template_identifier, template_texture_path)
     ATLAS_ARMOR_TRIMS["sources"][0]["textures"].append("trims/models/armor/" + name)
     ATLAS_ARMOR_TRIMS["sources"][0]["textures"].append("trims/models/armor/" + name + "_leggings")
+    add_template_tag(template_identifier)
     print("Added custom template: " + name)
 
 
@@ -273,11 +274,10 @@ def add_template_tag(identifier):
 
 
 def create_tag_files():
-    os.makedirs(TRIM_MATERIAL_TAG_DIR, exist_ok=True)
-    os.makedirs(TRIM_TEMPLATE_TAG_DIR, exist_ok=True)
-    with open(os.path.join(TRIM_MATERIAL_TAG_DIR, "trim_materials.json"), "w") as f:
+    os.makedirs(TRIM_TAG_DIR, exist_ok=True)
+    with open(os.path.join(TRIM_TAG_DIR, "trim_materials.json"), "w") as f:
         json.dump(TRIM_MATERIAL_TAG, f, indent=4)
-    with open(os.path.join(TRIM_TEMPLATE_TAG_DIR, "trim_templates.json"), "w") as f:
+    with open(os.path.join(TRIM_TAG_DIR, "trim_templates.json"), "w") as f:
         json.dump(TRIM_TEMPLATE_TAG, f, indent=4)
 
 
