@@ -64,13 +64,13 @@
         {
             "model": "minecraft:item/iron_helmet_echo_trim",
             "predicate": {
-                "trim_type": 0.11
+                "trim_type": 0.01
             }
         },
         {
             "model": "minecraft:item/iron_helmet_prismarine_trim",
             "predicate": {
-                "trim_type": 0.12
+                "trim_type": 0.02
             }
         }
     ],

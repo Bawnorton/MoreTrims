@@ -64,13 +64,13 @@
         {
             "model": "minecraft:item/leather_chestplate_echo_trim",
             "predicate": {
-                "trim_type": 0.11
+                "trim_type": 0.01
             }
         },
         {
             "model": "minecraft:item/leather_chestplate_prismarine_trim",
             "predicate": {
-                "trim_type": 0.12
+                "trim_type": 0.02
             }
         }
     ],
